@@ -2,7 +2,7 @@
   "name": "spotify-wrapper",
   "version": "1.0.0",
   "description": "A wrapper to work with the Spotify Web API",
-  "main": "src/index.js",
+  "main": "lib/index.js",
   "scripts": {
     "clear": "./node_modules/.bin/rimraf lib",
     "build": "./node_modules/.bin/babel --out-dir lib src",
@@ -12,11 +12,14 @@
     "build:umd:min": "./node_modules/.bin/webpack --output-filename spotify-wrapper.umd.min.js -p",
     "build:all": "npm run build && npm run build:umd && npm run build:umd:min",
     "lint": "./node_modules/.bin/eslint src/*.js -v",
-    "test": "./node_modules/.bin/mocha tests/**/*.spec.js --require babel-register",
-    "test:tdd": "./node_modules/.bin/mocha tests/**/*.spec.js --require babel-register --watch",
-    "test:index": "./node_modules/.bin/mocha tests/**/search.spec.js --require babel-register --watch",
+    "test": "./node_modules/.bin/mocha tests/**/*.spec.js --require @babel/register",
+    "test:tdd": "./node_modules/.bin/mocha tests/**/*.spec.js --require @babel/register --watch",
     "test:coverage": "nyc npm test"
   },
+  "files": [
+    "dist",
+    "lib"
+  ],
   "nyc": {
     "reporter": [
       "text",
