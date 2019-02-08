@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Spotify Wrapper Test</title>
+  </head>
+  <body>
+    <script src="../dist/spotify-wrapper.umd.js" ></script>
+  </body>
+
+  <div id="albums"></div>
+
+  <script>
+    const albumsEl = document.getElementById('albums');
+    const spotify = new spotifyWrapper({});
+    spotify.token = "BQDece8Vm5ghkJI40SrwysUhsRWP9B91cRYsfarcaNc3yMU-OClUG5-s0PEbNch2BISk90jll4sOcrCfMtJpuI6oSudB0GriPYJuVJicIrKipce_Z5M_LaWKcE0wY6kE28Po-vRm4_G_0SJGSpAZQYdao2Ne6AeKX2wl4JhhERyuoyDpktjB_hBsiBDM5wPAdxlD-eW0GbbcuAbXpbON7GUGuQwE4Iwl4FfC8p3A83ccbC_rb0PLhvtGtE1Y6cWFONsMMnuzstktIo_kAM2H";
+
+    const albums = spotify.search.albums('madonna');
+    albums.then(data => {
+      markup = data.albums.items.map(item =>
+        `<img width='100' src='${item.images[0].url}' alt='${item.name}' />`
+      ).join('');
+      //markup = data;
+      //console.log(markup);
+      albumsEl.innerHTML = markup;
+    });
+
+
+
+  </script>
+
+
+</html>

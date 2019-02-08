@@ -9,8 +9,9 @@
     "builder": "npm run clear && npm run build",
     "build:watch": "npm run build -- --watch",
     "build:umd": "./node_modules/.bin/webpack --output-filename spotify-wrapper.umd.js",
-    "lint": "./node_modules/.bin/eslint src/*.js",
-    "prepush": "npm run lint",
+    "build:umd:min": "./node_modules/.bin/webpack --output-filename spotify-wrapper.umd.min.js -p",
+    "build:all": "npm run build && npm run build:umd && npm run build:umd:min",
+    "lint": "./node_modules/.bin/eslint src/*.js -v",
     "test": "./node_modules/.bin/mocha tests/**/*.spec.js --require babel-register",
     "test:tdd": "./node_modules/.bin/mocha tests/**/*.spec.js --require babel-register --watch",
     "test:index": "./node_modules/.bin/mocha tests/**/search.spec.js --require babel-register --watch",
@@ -40,26 +41,27 @@
     "url": "https://github.com/matheusroversi/spotify-wrapper/issues"
   },
   "homepage": "https://github.com/matheusroversi/spotify-wrapper#readme",
+  "dependencies": {
+    "node-fetch": "^2.3.0"
+  },
   "devDependencies": {
-    "@babel/core": "^7.2.2",
-    "@babel/preset-env": "^7.3.1",
-    "babel-cli": "^6.26.0",
+    "@babel/core": "^7.1.2",
+    "@babel/preset-env": "^7.1.0",
+    "@babel/register": "^7.0.0",
+    "@babel/cli": "^7.0.0",
     "babel-loader": "^8.0.5",
-    "babel-register": "^6.26.0",
     "chai": "^3.5.0",
     "eslint": "^4.0.0",
     "eslint-config-airbnb-base": "^11.2.0",
     "eslint-plugin-import": "^2.6.1",
     "husky": "^0.11.9",
     "mocha": "^3.2.0",
-    "node-fetch": "^2.3.0",
     "nyc": "^10.2.0",
     "rimraf": "^2.6.1",
     "sinon": "^7.2.3",
     "sinon-chai": "^3.3.0",
     "uglifyjs-webpack-plugin": "^2.1.1",
-    "webpack": "^4.29.1",
-    "webpack-cli": "^3.2.1",
-    "webpack-dev-server": "^3.1.14"
+    "webpack": "^4.20.2",
+    "webpack-cli": "^3.2.3"
   }
 }
